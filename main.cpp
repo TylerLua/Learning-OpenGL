@@ -11,7 +11,15 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
 	cout << "New width: " << width << endl << ", New height: " << height << endl;
 }
 
+// Process inputs
+void processInput(GLFWwindow* window) {
+	if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ESCAPE)) {
+		glfwSetWindowShouldClose(window, true);
+	}	
+}
+
 int main() {
+
 	glfwInit();
 	// Tells me that glfw will create OpenGL context with Version 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -40,11 +48,19 @@ int main() {
 	// Render Loop
 	while (!glfwWindowShouldClose(window)) {
 
+		// Inputs
+		processInput(window);
+
+		// Rendering commands
+		glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		// Clear the color buffer
 		glfwSwapBuffers(window);
 
 		// Check for events
 		glfwPollEvents();
+		
 	}
 
 	glfwTerminate();
