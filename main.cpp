@@ -20,6 +20,13 @@ void processInput(GLFWwindow* window) {
 
 int main() {
 
+	// Triangle Vertices
+	float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	0.5f, -0.5f, 0.0f,
+	0.0f, 0.5f, 0.0f
+	};
+
 	glfwInit();
 	// Tells me that glfw will create OpenGL context with Version 3.3
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -43,7 +50,6 @@ int main() {
 
 	// Tell GLFW to call this function whenever the window is resized
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
 
 	// Render Loop
 	while (!glfwWindowShouldClose(window)) {
